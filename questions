@@ -1,0 +1,35 @@
+#!/usr/bin/env ruby
+require 'pry'
+
+direction, *questionableinput = ARGV
+
+storage = []
+i = 0
+	file = "/Users/bdf/questions.txt"
+	File.readlines(file).each do |list|
+storage << list
+
+
+end
+
+if direction == "add"
+
+	storage << questionableinput.join(" ")
+ open("/Users/bdf/questions.txt", 'w') {|f|
+ 	f.puts storage
+	}
+
+elsif direction == "rm"
+	questionableinput = questionableinput[0].to_i
+	storage.slice!(questionableinput)
+	open("/Users/bdf/questions.txt", 'w') {|f|
+	f.puts storage}
+
+else storage.each{|note| 
+print i, note
+i+=1
+}
+end
+
+
+
